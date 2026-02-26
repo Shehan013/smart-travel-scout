@@ -1,7 +1,7 @@
-import { testInventory } from '@/lib/test-inventory';
+import { testValidation } from '@/lib/test-validation';
 
 export default function Home() {
-  testInventory();
+  testValidation();
 
   return (
     <main className="p-8">
