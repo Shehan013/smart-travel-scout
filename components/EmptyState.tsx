@@ -14,7 +14,7 @@ export function EmptyState({ type, onReset }: EmptyStateProps) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
         <div className="max-w-md mx-auto">
-          <div className="bg-linear-to-br from-teal-100 to-orange-100 w-30 h-30 rounded-full flex items-center justify-center mx-auto mb-6 p-4">
+          <div className="bg-linear-to-br from-teal-100 to-orange-100 w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-6 p-4">
             <div className="relative w-full h-full">
               <Image
                 src="/images/logo.png"
