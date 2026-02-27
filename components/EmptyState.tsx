@@ -20,6 +20,7 @@ export function EmptyState({ type, onReset }: EmptyStateProps) {
                 src="/images/logo.png"
                 alt="Smart Travel Scout Logo"
                 fill
+                sizes="120px"
                 className="object-contain"
               />
             </div>
