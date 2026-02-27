@@ -28,6 +28,7 @@ export function HeroSection({ searchQuery, onSearchChange }: HeroSectionProps) {
                   src="/images/logo.png"
                   alt="Smart Travel Scout Logo"
                   fill
+                  sizes="8rem"
                   className="object-contain"
                 />
               </div>
