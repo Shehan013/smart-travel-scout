@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import Image from 'next/image';
 import { Experience } from '@/lib/types';
 import { getAllTags, getPriceRange } from '@/lib/inventory';
 import ExperienceCard from '@/components/ExperienceCard';
 import SearchFilters from '@/components/SearchFilters';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 /**
  * This defines the shape of search results
@@ -110,12 +112,28 @@ export default function Home() {
       {/* Header Section */}
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-4xl font-bold text-blue-900">
-            Smart Travel Scout
-          </h1>
-          <p className="mt-2 text-blue-600">
-            Find your perfect travel experience using AI-powered recommendations
-          </p>
+          <div className="flex items-center gap-4">
+            {/* Logo */}
+            <div className="relative w-12 h-12">
+              <Image
+                src="/images/logo.png"
+                alt="Smart Travel Scout Logo"
+                fill
+                sizes="48px"
+                className="object-contain"
+                priority
+              />
+            </div>
+            {/* Title and Description */}
+            <div>
+              <h1 className="text-4xl font-bold text-blue-900">
+                Smart Travel Scout
+              </h1>
+              <p className="mt-2 text-blue-600">
+                Find your perfect travel experience using AI-powered recommendations
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -170,8 +188,15 @@ export default function Home() {
           </div>
         )}
 
+        {/* Loading State */}
+        {loading && (
+          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <LoadingSpinner message="Finding your perfect travel experiences..." />
+          </div>
+        )}
+
         {/* Results Section */}
-        {results && (
+        {results && !loading && (
           <div className="space-y-6">
             {/* AI Reasoning */}
             <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
