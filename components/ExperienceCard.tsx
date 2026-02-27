@@ -1,59 +1,64 @@
-/**
- * ExperienceCard Component
- * 
- * Displays a single travel experience with all its details
- */
+'use client';
 
-import { Experience } from '@/lib/types';
-import { formatPrice, formatTag } from '@/lib/utils';
+import { MapPin, Sparkles } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Experience } from "@/lib/types";
 
-interface ExperienceCardProps {
+interface ExperienceCardNewProps {
   experience: Experience;
+  aiReasoning?: string;
 }
 
-export default function ExperienceCard({ experience }: ExperienceCardProps) {
+export function ExperienceCardNew({ experience, aiReasoning }: ExperienceCardNewProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow overflow-hidden">
-      <div className="h-2 bg-linear-to-r from-indigo-500 to-purple-500"></div>
-      
-      <div className="p-6">
-        <div className="mb-4">
-          <h3 className="text-xl font-bold text-gray-900 mb-1">
+    <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 border-2 border-gray-200 shadow-md relative">
+      {/* Price Badge */}
+      <div className="absolute top-4 right-4 z-10">
+        <div className="bg-linear-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded-full font-bold text-lg shadow-lg">
+          ${experience.price}
+        </div>
+      </div>
+
+      <CardContent className="p-5 pt-16">
+        {/* Title and Location */}
+        <div className="mb-3">
+          <h3 className="text-xl font-semibold text-gray-900 mb-2 line-clamp-2">
             {experience.title}
           </h3>
-          <p className="text-gray-600 flex items-center gap-1">
-            <span>📍</span>
-            <span>{experience.location}</span>
-          </p>
-        </div>
-
-        {/* Price */}
-        <div className="mb-4">
-          <div className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full">
-            <span className="font-bold text-lg">{formatPrice(experience.price)}</span>
-            <span className="text-sm ml-1">per person</span>
+          <div className="flex items-center gap-1.5 text-gray-600">
+            <MapPin className="w-4 h-4 shrink-0" />
+            <span className="text-sm">{experience.location}</span>
           </div>
         </div>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-4">
           {experience.tags.map((tag) => (
-            <span
+            <Badge
               key={tag}
-              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md"
+              variant="secondary"
+              className="bg-teal-50 text-teal-700 border border-teal-200 font-normal"
             >
-              #{formatTag(tag)}
-            </span>
+              {tag}
+            </Badge>
           ))}
         </div>
-      </div>
 
-      {/* Card Footer */}
-      {/* <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
-        <button className="w-full text-center text-indigo-600 hover:text-indigo-800 font-medium text-sm">
-          View Details →
-        </button>
-      </div> */}
-    </div>
+        {/* AI Reasoning */}
+        {aiReasoning && (
+          <div className="bg-linear-to-r from-purple-50 to-blue-50 rounded-lg p-4 border border-purple-100">
+            <div className="flex items-start gap-2">
+              <Sparkles className="w-4 h-4 text-purple-500 mt-0.5 shrink-0" />
+              <div>
+                <p className="text-xs font-semibold text-purple-700 mb-1">AI Recommendation</p>
+                <p className="text-sm text-gray-700 leading-relaxed">{aiReasoning}</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </CardContent>
+
+    </Card>
   );
 }
