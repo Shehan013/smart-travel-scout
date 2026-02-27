@@ -139,7 +139,7 @@ node scripts/test-api.js
 
 ---
 
-## 🌐 Deployment
+## Deployment
 
 This project is optimized for deployment on **Vercel**:
 
@@ -183,7 +183,7 @@ Vercel will automatically detect Next.js and configure the build settings.
 
 ---
 
-## 📚 Learning Outcomes
+## Learning Outcomes
 
 This project demonstrates:
 - **TypeScript Proficiency**: Interfaces, type inference, generic types, and compile-time safety
