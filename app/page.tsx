@@ -111,42 +111,41 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100">
       {/* Hero Section with Search */}
-      <HeroSection 
-        searchQuery={query}
-        onSearchChange={setQuery}
-      />
+      <form onSubmit={handleSearch}>
+        <HeroSection 
+          searchQuery={query}
+          onSearchChange={setQuery}
+        />
 
-      {/* Search Button */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <Button
-          onClick={(e) => {
-            e.preventDefault();
-            handleSearch({ preventDefault: () => {} } as FormEvent<HTMLFormElement>);
-          }}
-          disabled={loading || query.trim().length < 3}
-          className="w-full bg-linear-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed h-auto"
-        >
-          {loading ? (
-            <>
-              <Sparkles className="w-5 h-5 mr-2 animate-spin" />
-              Searching...
-            </>
-          ) : (
-            <>
-              <Sparkles className="w-5 h-5 mr-2" />
-              Find Experiences
-            </>
+        {/* Search Button */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <Button
+            type="submit"
+            disabled={loading || query.trim().length < 3}
+            className="w-full bg-linear-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed h-auto"
+          >
+            {loading ? (
+              <>
+                <Sparkles className="w-5 h-5 mr-2 animate-spin" />
+                Searching...
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-5 h-5 mr-2" />
+                Find Experiences
+              </>
+            )}
+          </Button>
+
+          {/* Error Display */}
+          {error && (
+            <div className="mt-6 bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-xl shadow-sm">
+              <p className="font-semibold mb-1">Error</p>
+              <p className="text-sm">{error}</p>
+            </div>
           )}
-        </Button>
-
-        {/* Error Display */}
-        {error && (
-          <div className="mt-6 bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-xl shadow-sm">
-            <p className="font-semibold mb-1">Error</p>
-            <p className="text-sm">{error}</p>
-          </div>
-        )}
-      </div>
+        </div>
+      </form>
 
       {/* Filter Section */}
       <FilterSection
