@@ -62,6 +62,7 @@ export function HeroSection({ searchQuery, onSearchChange }: HeroSectionProps) {
             {['Peaceful beach', 'Adventure activities', 'Cultural sites', 'Wildlife safari'].map((suggestion) => (
               <button
                 key={suggestion}
+                type="button"
                 onClick={() => onSearchChange(suggestion)}
                 className="text-sm text-gray-400 px-4 py-1.5 bg-white border border-gray-200 rounded-full hover:border-teal-400 hover:text-teal-600 transition-colors"
               >
