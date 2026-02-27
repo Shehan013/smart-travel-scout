@@ -1,6 +1,6 @@
 'use client';
 
-import { Search, Compass } from "lucide-react";
+import { Search } from "lucide-react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 
