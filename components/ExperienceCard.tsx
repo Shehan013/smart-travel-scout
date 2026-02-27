@@ -4,6 +4,7 @@ import { MapPin, Sparkles } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Experience } from "@/lib/types";
+import { formatTag } from "@/lib/utils";
 
 interface ExperienceCardNewProps {
   experience: Experience;
@@ -40,7 +41,7 @@ export function ExperienceCardNew({ experience, aiReasoning }: ExperienceCardNew
               variant="secondary"
               className="bg-teal-50 text-teal-700 border border-teal-200 font-normal"
             >
-              {tag}
+              {formatTag(tag)}
             </Badge>
           ))}
         </div>
